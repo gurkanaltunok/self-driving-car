@@ -1,11 +1,18 @@
 class Controls{
-    constructor(){
-        this.foward=false;
+    constructor(type){
+        this.forward=false;
         this.left=false;
         this.right=false;
         this.reverse=false;
 
-        this.#addKeyboardListeners();
+        switch(type){
+            case "KEYS":
+                this.#addKeyboardListeners();
+                break;
+            case "DUMMY":
+                this.forward=true;
+                break;
+        }
     }
 
     #addKeyboardListeners(){
@@ -18,7 +25,7 @@ class Controls{
                     this.right=true;
                     break;
                 case "ArrowUp":
-                    this.foward=true;
+                    this.forward=true;
                     break;
                 case "ArrowDown":
                     this.reverse=true;
@@ -34,7 +41,7 @@ class Controls{
                     this.right=false;
                     break;
                 case "ArrowUp":
-                    this.foward=false;
+                    this.forward=false;
                     break;
                 case "ArrowDown":
                     this.reverse=false;
